@@ -79,7 +79,7 @@ fun Greeting() {
     val writeAccessLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
-        if (isGranted) {
+        if (isGranted||Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             val fName = Random.nextInt()
             FileHelper().saveImage(savedUri, "Image$fName", context)
         }
